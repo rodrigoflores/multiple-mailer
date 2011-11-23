@@ -1,0 +1,323 @@
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (1.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20111123004013)
+  [1m[35m (0.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.7ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36m (0.3ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111123004013')
+Migrating to DeviseCreateAdmins (20111123004020)
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "admins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.2ms)[0m  PRAGMA index_list("admins")
+  [1m[36m (0.5ms)[0m  [1mCREATE UNIQUE INDEX "index_admins_on_email" ON "admins" ("email")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("admins")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_admins_on_email')[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_admins_on_reset_password_token" ON "admins" ("reset_password_token")
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111123004020')[0m
+  [1m[35m (0.5ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("admins")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_admins_on_reset_password_token')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_admins_on_email')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+
+
+Started GET "/admin/sign_up" for 127.0.0.1 at 2011-11-22 22:51:53 -0200
+
+ActionController::RoutingError (No route matches [GET] "/admin/sign_up"):
+  
+
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (5.2ms)
+
+
+Started GET "/admins/sign_up" for 127.0.0.1 at 2011-11-22 22:52:09 -0200
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/devise-1.5.1/app/views/devise/shared/_links.erb (2.4ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/devise-1.5.1/app/views/devise/registrations/new.html.erb within layouts/application (73.8ms)
+Compiled application.css  (1ms)  (pid 18560)
+Compiled application.js  (4ms)  (pid 18560)
+Compiled jquery.js  (4ms)  (pid 18560)
+Compiled jquery_ujs.js  (0ms)  (pid 18560)
+Completed 200 OK in 236ms (Views: 186.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-11-22 22:52:10 -0200
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-11-22 22:52:10 -0200
+Served asset /application.js - 200 OK (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-11-22 22:52:10 -0200
+Served asset /jquery_ujs.js - 200 OK (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-11-22 22:52:10 -0200
+Served asset /application.css - 200 OK (0ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2011-11-22 22:52:20 -0200
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xqp7PzFmtqyEl1MprgoUO2YO4hMNkh9+HOmTW9oNLHg=", "admin"=>{"email"=>"a@b.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Completed 500 Internal Server Error in 130ms
+
+NameError (undefined local variable or method `confirmed_at' for #<Admin:0x007fb3c31e2430>):
+  
+
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.3ms)
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (2.2ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateUsers (20111123004013)
+  [1m[35m (0.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.5ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
+  [1m[36m (0.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20111123004013')
+Migrating to DeviseCreateAdmins (20111123004020)
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "admins" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar(255) DEFAULT '' NOT NULL, "encrypted_password" varchar(128) DEFAULT '' NOT NULL, "reset_password_token" varchar(255), "reset_password_sent_at" datetime, "remember_created_at" datetime, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" datetime, "last_sign_in_at" datetime, "current_sign_in_ip" varchar(255), "last_sign_in_ip" varchar(255), "confirmation_token" varchar(255), "confirmed_at" datetime, "confirmation_sent_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("admins")
+  [1m[36m (0.6ms)[0m  [1mCREATE UNIQUE INDEX "index_admins_on_email" ON "admins" ("email")[0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("admins")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_admins_on_email')[0m
+  [1m[35m (0.2ms)[0m  CREATE UNIQUE INDEX "index_admins_on_reset_password_token" ON "admins" ("reset_password_token")
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20111123004020')[0m
+  [1m[35m (0.4ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.1ms)[0m  PRAGMA index_list("admins")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_admins_on_reset_password_token')[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_admins_on_email')
+  [1m[36m (0.1ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_reset_password_token')
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
+
+
+Started POST "/admins" for 127.0.0.1 at 2011-11-22 22:53:24 -0200
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xqp7PzFmtqyEl1MprgoUO2YO4hMNkh9+HOmTW9oNLHg=", "admin"=>{"email"=>"a@b.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mAdmin Load (0.2ms)[0m  [1mSELECT "admins".* FROM "admins" WHERE "admins"."confirmation_token" = 'fs8pL6s7xmzw3CWxGCAa' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (61.3ms)[0m  INSERT INTO "admins" ("confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["confirmation_sent_at", Wed, 23 Nov 2011 00:53:24 UTC +00:00], ["confirmation_token", "fs8pL6s7xmzw3CWxGCAa"], ["confirmed_at", nil], ["created_at", Wed, 23 Nov 2011 00:53:24 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "a@b.com"], ["encrypted_password", "$2a$10$DGaRgvNX0xy0WXH/jyRuJeN1JC32NqF/kj38RX.L9/8nldbjixfNC"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 23 Nov 2011 00:53:24 UTC +00:00]]
+Rendered admin_mailer/confirmation_instructions.html.erb (17.7ms)
+Completed 500 Internal Server Error in 2510ms
+
+ActionView::Template::Error (Missing host to link to! Please provide the :host parameter, set default_url_options[:host], or set :only_path to true):
+    2: 
+    3: <p>You can confirm your account through the link below:</p>
+    4: 
+    5: <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+  app/views/admin_mailer/confirmation_instructions.html.erb:5:in `_app_views_admin_mailer_confirmation_instructions_html_erb___2532034587585391254_70205023780080'
+  app/mailers/admin_mailer.rb:6:in `confirmation_instructions'
+
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (5.2ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2011-11-22 22:55:01 -0200
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xqp7PzFmtqyEl1MprgoUO2YO4hMNkh9+HOmTW9oNLHg=", "admin"=>{"email"=>"a@b.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mAdmin Load (0.3ms)[0m  [1mSELECT "admins".* FROM "admins" WHERE "admins"."confirmation_token" = '5hy642eUk8BrakpcuyD6' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (55.2ms)[0m  INSERT INTO "admins" ("confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["confirmation_sent_at", Wed, 23 Nov 2011 00:55:02 UTC +00:00], ["confirmation_token", "5hy642eUk8BrakpcuyD6"], ["confirmed_at", nil], ["created_at", Wed, 23 Nov 2011 00:55:02 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "a@b.com"], ["encrypted_password", "$2a$10$ZwMTYDMJcJSXWTISJpKqEO4C.0UFhsEaKilsSN46VPLZP/dedfZGu"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 23 Nov 2011 00:55:02 UTC +00:00]]
+Rendered admin_mailer/confirmation_instructions.html.erb (5.8ms)
+
+Sent mail to a@b.com (88ms)
+Date: Tue, 22 Nov 2011 22:55:04 -0200
+From: me@myself.com
+To: a@b.com
+Message-ID: <4ecc44683ed70_49ba3fcee5cc10fc2625c@Suomi.mail>
+Subject: Confirm your admin account
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome User a@b.com!</p>
+
+<p>You can confirm your account through the link below:</p>
+
+<p><a href="http://localhost:3000/admins/confirmation?confirmation_token=5hy642eUk8BrakpcuyD6">Confirm my account</a></p>
+Completed 500 Internal Server Error in 2277ms
+
+NameError (undefined local variable or method `root_path' for #<Devise::RegistrationsController:0x007f9dcd027a98>):
+  
+
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.1ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.3ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2011-11-22 22:56:05 -0200
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xqp7PzFmtqyEl1MprgoUO2YO4hMNkh9+HOmTW9oNLHg=", "admin"=>{"email"=>"a@b.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mAdmin Load (0.1ms)[0m  [1mSELECT "admins".* FROM "admins" WHERE "admins"."confirmation_token" = 'LCvXwCmYpYZAmeFix9tX' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (4.0ms)[0m  INSERT INTO "admins" ("confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["confirmation_sent_at", Wed, 23 Nov 2011 00:56:05 UTC +00:00], ["confirmation_token", "LCvXwCmYpYZAmeFix9tX"], ["confirmed_at", nil], ["created_at", Wed, 23 Nov 2011 00:56:05 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "a@b.com"], ["encrypted_password", "$2a$10$sLmxojGs13LRKS2yqojiz.U5CphBVvYkkSN6J.UVfpfhIQfTFJ4i2"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 23 Nov 2011 00:56:05 UTC +00:00]]
+SQLite3::ConstraintException: constraint failed: INSERT INTO "admins" ("confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Completed 500 Internal Server Error in 185ms
+
+SQLite3::ConstraintException (column email is not unique):
+  
+
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.2ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2011-11-22 22:56:15 -0200
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xqp7PzFmtqyEl1MprgoUO2YO4hMNkh9+HOmTW9oNLHg=", "admin"=>{"email"=>"a@b2.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mAdmin Load (0.8ms)[0m  [1mSELECT "admins".* FROM "admins" WHERE "admins"."confirmation_token" = 'vxCGmVTADEErUb9nzfnu' LIMIT 1[0m
+
+
+Started GET "/admins" for 127.0.0.1 at 2011-11-22 22:56:34 -0200
+
+ActionController::RoutingError (No route matches [GET] "/admins"):
+  
+
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.7ms)
+
+
+Started GET "/admins/sign_up" for 127.0.0.1 at 2011-11-22 22:56:37 -0200
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/devise-1.5.1/app/views/devise/shared/_links.erb (2.3ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/devise-1.5.1/app/views/devise/registrations/new.html.erb within layouts/application (63.7ms)
+Completed 200 OK in 126ms (Views: 81.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-11-22 22:56:37 -0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-11-22 22:56:37 -0200
+Served asset /jquery.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-11-22 22:56:38 -0200
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-11-22 22:56:38 -0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/admins" for 127.0.0.1 at 2011-11-22 22:56:45 -0200
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xqp7PzFmtqyEl1MprgoUO2YO4hMNkh9+HOmTW9oNLHg=", "admin"=>{"email"=>"a@b2.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mAdmin Load (0.1ms)[0m  [1mSELECT "admins".* FROM "admins" WHERE "admins"."confirmation_token" = '7zatPykbf9Mep5AGukT1' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (12.8ms)[0m  INSERT INTO "admins" ("confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["confirmation_sent_at", Wed, 23 Nov 2011 00:56:45 UTC +00:00], ["confirmation_token", "7zatPykbf9Mep5AGukT1"], ["confirmed_at", nil], ["created_at", Wed, 23 Nov 2011 00:56:45 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "a@b2.com"], ["encrypted_password", "$2a$10$jZtghhXA7x6KVxhXMXWYu.ckmyWQ.wI1JvMLd4q2e8xMjVDi2DiWa"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 23 Nov 2011 00:56:45 UTC +00:00]]
+Rendered admin_mailer/confirmation_instructions.html.erb (1.2ms)
+
+Sent mail to a@b2.com (25ms)
+Date: Tue, 22 Nov 2011 22:56:47 -0200
+From: me@myself.com
+To: a@b2.com
+Message-ID: <4ecc44cf7afd2_49f43feb54a0d98841056@Suomi.mail>
+Subject: Confirm your admin account
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome Admin a@b2.com!</p>
+
+<p>You can confirm your account through the link below:</p>
+
+<p><a href="http://localhost:3000/admins/confirmation?confirmation_token=7zatPykbf9Mep5AGukT1">Confirm my account</a></p>
+Completed 500 Internal Server Error in 2230ms
+
+NameError (undefined local variable or method `root_path' for #<Devise::RegistrationsController:0x007fd6ab8d2910>):
+  
+
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2011-11-22 22:56:58 -0200
+  Processing by Devise::RegistrationsController#new as HTML
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/devise-1.5.1/app/views/devise/shared/_links.erb (1.0ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/devise-1.5.1/app/views/devise/registrations/new.html.erb within layouts/application (70.9ms)
+Completed 200 OK in 95ms (Views: 78.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2011-11-22 22:56:58 -0200
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2011-11-22 22:56:58 -0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2011-11-22 22:56:58 -0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2011-11-22 22:56:58 -0200
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-11-22 22:57:06 -0200
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xqp7PzFmtqyEl1MprgoUO2YO4hMNkh9+HOmTW9oNLHg=", "user"=>{"email"=>"a@b.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."confirmation_token" = '7SJUZ1kmD7DBAqZLPJ2s' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "users" ("confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["confirmation_sent_at", Wed, 23 Nov 2011 00:57:07 UTC +00:00], ["confirmation_token", "7SJUZ1kmD7DBAqZLPJ2s"], ["confirmed_at", nil], ["created_at", Wed, 23 Nov 2011 00:57:07 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "a@b.com"], ["encrypted_password", "$2a$10$HR5vrsXQD7gbWZ6/ZnInrOvl/xnlsInPWPinuWMpx8qhlQ9/xjfwO"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 23 Nov 2011 00:57:07 UTC +00:00]]
+Completed 500 Internal Server Error in 188ms
+
+LoadError (Expected /Users/flores/Code/multiple-mailers/app/mailers/user_mailer.rb to define UserMailer):
+  app/models/user.rb:7:in `devise_mailer'
+
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.7ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-11-22 22:57:31 -0200
+  Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xqp7PzFmtqyEl1MprgoUO2YO4hMNkh9+HOmTW9oNLHg=", "user"=>{"email"=>"a@b.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."confirmation_token" = 'X6Mz4GkmZfyDoppe8yDz' LIMIT 1[0m
+Binary data inserted for `string` type on column `encrypted_password`
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "users" ("confirmation_sent_at", "confirmation_token", "confirmed_at", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["confirmation_sent_at", Wed, 23 Nov 2011 00:57:31 UTC +00:00], ["confirmation_token", "X6Mz4GkmZfyDoppe8yDz"], ["confirmed_at", nil], ["created_at", Wed, 23 Nov 2011 00:57:31 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "a@b.com"], ["encrypted_password", "$2a$10$Dv9ryJ5toHpg.MSRX0YFtuVIjOcJUSxq6vStLdyp8zY4l1pT9OuC."], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 23 Nov 2011 00:57:31 UTC +00:00]]
+Rendered user_mailer/confirmation_instructions.html.erb (6.7ms)
+
+Sent mail to a@b.com (19ms)
+Date: Tue, 22 Nov 2011 22:57:31 -0200
+From: notifications@example.com
+To: a@b.com
+Message-ID: <4ecc44fbf0acc_49f43feb5477089c41192@Suomi.mail>
+Subject: Confirm your admin account
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome User a@b.com!</p>
+
+<p>You can confirm your account through the link below:</p>
+
+<p><a href="http://localhost:3000/users/confirmation?confirmation_token=X6Mz4GkmZfyDoppe8yDz">Confirm my account</a></p>
+Completed 500 Internal Server Error in 389ms
+
+NameError (undefined local variable or method `root_path' for #<Devise::RegistrationsController:0x007fd6abd818f8>):
+  
+
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+Rendered /Users/flores/.rbenv/versions/1.9.3-p0/lib/ruby/gems/1.9.1/gems/actionpack-3.1.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.4ms)
